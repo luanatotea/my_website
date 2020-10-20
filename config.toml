@@ -37,8 +37,8 @@ disqusShortname = ""
 
   # Navigation Section
   [params.navigation]
-    title = "Forty"
-    subtitle = "By HTML5 Up"
+    title = "My Portofolio"
+    subtitle = "LBS 2021"
     menu = "Menu"
     # Optional logo as brand stored in img/
     # logo = "logo.png"
