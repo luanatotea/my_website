@@ -1,5 +1,5 @@
 # Site settings
-baseURL = "http://example.org/"
+baseURL = "https://lmt-mfa-lbs.netlify.app/"
 languageCode = "en-us"
 title = "Luana"
 theme = "forty"
