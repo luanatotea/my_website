@@ -94,7 +94,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "DIJA Risk/Return"
       subtitle = "Risk return of DJIA stocks"
-      image = "pic01.jpg"
+      image = "pic11.jpg"
       url = "blogs/blog5"
 
     [[params.tiles.showcase]]

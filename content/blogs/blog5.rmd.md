@@ -5,7 +5,7 @@ categories:
 date: "2017-10-31T21:28:43-05:00"
 description: Risk return of DJIA stocks
 draft: false
-image: pic10.jpg
+image: pic11.jpg
 keywords: ""
 slug: blog5
 title: Risk return of DJIA stocks
