@@ -2,7 +2,7 @@
 baseURL = "https://lmt-portofolio-website.netlify.app/"
 languageCode = "en-us"
 title = "Luana"
-theme = "forty"
+theme = "ocean"
 
 # Enter your tracking code to enable Google Analytics
 googleAnalytics = ""
@@ -84,6 +84,7 @@ disqusShortname = ""
     title = "Hey there! This is Luana Totea"
     subtitle = "Start your journey to know more about me."
     buttonText = "Let's get going!"
+    image = "projects/pic15.jpg"
 
 
   # Tiles Section
@@ -94,7 +95,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "DIJA Risk/Return"
       subtitle = "Risk return of DJIA stocks"
-      image = "pic11.jpg"
+      image = "projects/pic15.jpg"
       url = "blogs/blog5"
 
     [[params.tiles.showcase]]
@@ -112,7 +113,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Ipsum"
       subtitle = "Nisl Sed Aliquam"
-      image = "pic04.jpg"
+      image = "PBA.pdf"
       url = "blogs/ipsum"
 
     [[params.tiles.showcase]]
