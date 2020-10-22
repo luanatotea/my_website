@@ -8,7 +8,7 @@ draft: false
 image: pic10.jpg
 keywords: ""
 slug: blog7
-title: Ipsum
+title: Airbnb
 ---
 
 ```{r, setup, echo=FALSE}
