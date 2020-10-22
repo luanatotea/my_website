@@ -105,10 +105,10 @@ disqusShortname = ""
       url = "blogs/blog7"
 
     [[params.tiles.showcase]]
-      title = "Magna"
-      subtitle = "Lorem Etiam Nullam"
+      title = "Climate change and temperature anomalies"
+      subtitle = "Climate change and temperature anomalies"
       image = "pic03.jpg"
-      url = "blogs/magna"
+      url = "blogs/blog8"
 
     [[params.tiles.showcase]]
       title = "Ipsum"
