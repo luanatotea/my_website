@@ -88,7 +88,7 @@ Furthermore, on top of sub setting the data to create dataframes that are fit fo
 First, we need to import the datas from Airbnb databse
 
 ```{r load-data}
-#Import data
+#Import data`
 listings <- vroom::vroom("http://data.insideairbnb.com/sweden/stockholms-l%C3%A4n/stockholm/2020-06-26/data/listings.csv.gz") %>% 
   clean_names()
 ```
