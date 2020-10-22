@@ -1,0 +1,136 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T21:28:43-05:00"
+description: Risk return of DJIA stocks
+draft: false
+image: pic11.jpg
+keywords: ""
+slug: blog5
+title: Risk return of DJIA stocks
+---
+
+
+
+<p>Next, let’s choose the <a href="https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average">Dow Jones Industrial Aveareg (DJIA)</a> stocks and their ticker symbols and download some data. Besides the thirty stocks that make up the DJIA, we will also add <code>SPY</code> which is an SP500 ETF (Exchange Traded Fund).</p>
+<pre class="r"><code>djia_url &lt;- &quot;https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average&quot;
+
+tables &lt;- djia_url %&gt;% 
+  read_html() %&gt;% 
+  html_nodes(css=&quot;table&quot;)
+
+
+djia &lt;- map(tables, . %&gt;% 
+               html_table(fill=TRUE)%&gt;% 
+               clean_names())
+
+table1 &lt;- djia[[2]] %&gt;%
+  mutate(date_added = ymd(date_added),
+         
+    
+         ticker = ifelse(str_detect(symbol, &quot;NYSE*&quot;),
+                          str_sub(symbol,7,11),
+                          symbol)
+         )
+
+tickers &lt;- table1 %&gt;% 
+  select(ticker) %&gt;% 
+  pull() %&gt;%
+  c(&quot;SPY&quot;)</code></pre>
+<pre class="r"><code>myStocks &lt;- tickers %&gt;% 
+  tq_get(get  = &quot;stock.prices&quot;,
+         from = &quot;2000-01-01&quot;,
+         to   = &quot;2020-08-31&quot;) %&gt;%
+  group_by(symbol) 
+
+glimpse(myStocks) </code></pre>
+<pre><code>## Rows: 153,121
+## Columns: 8
+## Groups: symbol [31]
+## $ symbol   &lt;chr&gt; &quot;MMM&quot;, &quot;MMM&quot;, &quot;MMM&quot;, &quot;MMM&quot;, &quot;MMM&quot;, &quot;MMM&quot;, &quot;MMM&quot;, &quot;MMM&quot;, &quot;MMM…
+## $ date     &lt;date&gt; 2000-01-03, 2000-01-04, 2000-01-05, 2000-01-06, 2000-01-07,…
+## $ open     &lt;dbl&gt; 48.0, 46.4, 45.6, 47.2, 50.6, 50.2, 50.4, 51.0, 50.7, 50.4, …
+## $ high     &lt;dbl&gt; 48.2, 47.4, 48.1, 51.2, 51.9, 51.8, 51.2, 51.8, 50.9, 50.5, …
+## $ low      &lt;dbl&gt; 47.0, 45.3, 45.6, 47.2, 50.0, 50.0, 50.2, 50.4, 50.2, 49.5, …
+## $ close    &lt;dbl&gt; 47.2, 45.3, 46.6, 50.4, 51.4, 51.1, 50.2, 50.4, 50.4, 49.7, …
+## $ volume   &lt;dbl&gt; 2173400, 2713800, 3699400, 5975800, 4101200, 3863800, 235760…
+## $ adjusted &lt;dbl&gt; 28.1, 26.9, 27.7, 30.0, 30.5, 30.4, 29.9, 30.0, 30.0, 29.5, …</code></pre>
+<p>Financial performance analysis depend on returns; If I buy a stock today for 100 and I sell it tomorrow for 101.75, my one-day return, assuming no transaction costs, is 1.75%. So given the adjusted closing prices, our first step is to calculate daily and monthly returns.</p>
+<pre class="r"><code>#calculate daily returns
+myStocks_returns_daily &lt;- myStocks %&gt;%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = &quot;daily&quot;, 
+               type       = &quot;log&quot;,
+               col_rename = &quot;daily_returns&quot;,
+               cols = c(nested.col))  
+
+#calculate monthly  returns
+myStocks_returns_monthly &lt;- myStocks %&gt;%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = &quot;monthly&quot;, 
+               type       = &quot;arithmetic&quot;,
+               col_rename = &quot;monthly_returns&quot;,
+               cols = c(nested.col)) 
+
+#calculate yearly returns
+myStocks_returns_annual &lt;- myStocks %&gt;%
+  group_by(symbol) %&gt;%
+  tq_transmute(select     = adjusted, 
+               mutate_fun = periodReturn, 
+               period     = &quot;yearly&quot;, 
+               type       = &quot;arithmetic&quot;,
+               col_rename = &quot;yearly_returns&quot;,
+               cols = c(nested.col))</code></pre>
+<p>Create a dataframe and assign it to a new object, where you summarise monthly returns since 2017-01-01 for each of the stocks and <code>SPY</code>; min, max, median, mean, SD.</p>
+<pre class="r"><code>after_20170101 &lt;- myStocks_returns_monthly %&gt;%
+    filter(date &gt;= &quot;2016-12-30&quot;)
+
+after_20170101 %&gt;%
+  group_by(symbol) %&gt;%
+  summarise(Minimum_Perc = min(monthly_returns*100), Maximum_Perc = max(monthly_returns*100), Median_Perc = median(monthly_returns*100), Mean_Perc = mean(monthly_returns*100), Standard_Deviation_Perc = sd(monthly_returns*100))</code></pre>
+<pre><code>## # A tibble: 31 x 6
+##    symbol Minimum_Perc Maximum_Perc Median_Perc Mean_Perc Standard_Deviation_Pe…
+##    &lt;chr&gt;         &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;
+##  1 AAPL          -18.1        20.0        4.87     3.89                     8.63
+##  2 AMGN          -10.4        18.0        2.35     1.71                     6.56
+##  3 AXP           -22.1         9.88       1.56     1.13                     6.32
+##  4 BA            -45.8        25.7        2.72     1.29                    11.8 
+##  5 CAT           -19.9        13.8        3.14     1.41                     7.37
+##  6 CRM           -15.5        39.1        4.02     3.32                     8.50
+##  7 CSCO          -15.5        13.0        1.84     1.26                     6.65
+##  8 CVX           -22.4        27.0        0.219    0.0318                   7.44
+##  9 DIS           -17.9        23.4       -0.110    1.08                     7.46
+## 10 DOW           -27.6        25.5        4.56     0.898                   12.8 
+## # … with 21 more rows</code></pre>
+<p>Plot a density plot, using <code>geom_density()</code>, for each of the stocks</p>
+<pre class="r"><code># YOUR CODE GOES HERE
+ ggplot(data = after_20170101, mapping = aes(x = monthly_returns)) + 
+     geom_density() +
+     facet_wrap(~ symbol)+
+     labs(y= &quot;Density&quot;, x = &quot;Monthly returns&quot;, title = &quot;Density of Monthly Returns by Company&quot;)+
+  NULL</code></pre>
+<p><img src="/blogs/blog5_files/figure-html/density_monthly_returns-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p>What can you infer from this plot? Which stock is the riskiest? The least risky?</p>
+<blockquote>
+<p>TYPE YOUR ANSWER AFTER (AND OUTSIDE!) THIS BLOCKQUOTE.</p>
+</blockquote>
+<p>The riskest should be AAPL since it has the most spreaded monthly returns, while the least risky is KO since most of its monthly returns accumulate within a limited range. Due to the inate diversification of SPY, it is less “risky” than any of the individual companies.</p>
+<p>Finally, produce a plot that shows the expected monthly return (mean) of a stock on the Y axis and the risk (standard deviation) in the X-axis. Please use <code>ggrepel::geom_text_repel()</code> to label each stock with its ticker symbol</p>
+<pre class="r"><code> sd &lt;- after_20170101 %&gt;%
+   group_by(symbol) %&gt;%
+  summarise(mean = mean(monthly_returns), SD = sd(monthly_returns))
+
+ggplot(data = sd, mapping = aes(x = SD, y = mean, label = symbol)) +
+  geom_point() +
+  geom_text_repel()+
+  labs(x = &quot;Standard Deviation&quot;, y = &quot;Mean&quot;, title = &quot;Expected Monthly Return vs Risk&quot;)+
+  NULL</code></pre>
+<p><img src="/blogs/blog5_files/figure-html/risk_return_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p>What can you infer from this plot? Are there any stocks which, while being riskier, do not have a higher expected return?</p>
+<blockquote>
+<p>TYPE YOUR ANSWER AFTER (AND OUTSIDE!) THIS BLOCKQUOTE.
+Yes there are, Boeing for example has a significantly higher risk (as measured by SD) vs its mean monthly return. Cisco for example has a similar return profile whilst exhibiting lower risk</p>
+</blockquote>

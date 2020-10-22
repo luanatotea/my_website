@@ -2,7 +2,7 @@
 baseURL = "https://lmt-portofolio-website.netlify.app/"
 languageCode = "en-us"
 title = "Luana"
-theme = "ocean"
+theme = "forty"
 
 # Enter your tracking code to enable Google Analytics
 googleAnalytics = ""
