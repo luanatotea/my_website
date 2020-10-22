@@ -81,9 +81,9 @@ disqusShortname = ""
   [params.banner]
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
-    title = "Hey there! This is Luana Totea"
-    subtitle = "Start your journey to know more about me."
-    buttonText = "Let's get going!"
+    title = "Hey there! This is Luana"
+    subtitle = "Topics I'm interested in."
+    buttonText = "Let's dive in!"
     image = "projects/pic15.jpg"
 
 
@@ -133,12 +133,18 @@ disqusShortname = ""
   # Section Type Two
   [params.two]
     enable = true
-    title = "Massa libero"
-    subtitle = """Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
-    Mauris aliquet magna magna sed nunc rhoncus pharetra. 
-    Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. 
-    Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero.
-    Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus."""
+    title = "About me"
+    subtitle = "ullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
+    My name is Luana Totea. I graduated in September 2018 from University College London 
+    with a joint degree in Computer Science and Business from their Engineering department. 
+    During my time as an undergraduate student I worked part time at UCL as an IT training 
+    assistant for their Research Department. I aldo did a placement year at Goldman Sachs 
+    in their Securities Division and then joined the firm full time for two years. 
+    Next year I will be graduating from London Business School with a Masters degree in 
+    Finance. In parallel I will be studying MA Art Business at Sothebys institute. 
+    I want to use this platform to share my work on various topics I'm intereted in. 
+    I view it as an immersive canvas touching on subjects from Finance, Climate Change 
+    (&Sustainability), Art and the Art Market and Fashion."
     buttonText = "Get Started"
     url = "blogs"
 
