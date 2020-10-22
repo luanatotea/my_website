@@ -134,8 +134,7 @@ disqusShortname = ""
   [params.two]
     enable = true
     title = "About me"
-    subtitle = "ullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
-    My name is Luana Totea. I graduated in September 2018 from University College London 
+    subtitle = " My name is Luana Totea. I graduated in September 2018 from University College London 
     with a joint degree in Computer Science and Business from their Engineering department. 
     During my time as an undergraduate student I worked part time at UCL as an IT training 
     assistant for their Research Department. I aldo did a placement year at Goldman Sachs 
