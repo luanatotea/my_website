@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 ```
 
 
-```{r load-libraries, echo=FALSE}
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
 library(tidyverse)
 library(mosaic)
 library(ggthemes)
