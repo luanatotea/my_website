@@ -81,7 +81,7 @@ disqusShortname = ""
   [params.banner]
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
-    title = "Hey there! This is"
+    title = "L-M T"
     subtitle = "MASTER IN FINANCIAL ANALYSIS @LONDON BUSINESS SCHOOL & MASTER IN ART BUSINESS @Sothebys Insitute of Art"
     buttonText = "Let's dive in!"
     image = "banner.jpg"
