@@ -92,6 +92,12 @@ disqusShortname = ""
     enable = true
     # Display your showcases here.
     
+   [[params.tiles.showcase]]
+      title = "About me"
+      subtitle = "My story"
+      image = "projects/pic18.jpg"
+      url = "blogs/blog1"
+    
     [[params.tiles.showcase]]
       title = "DIJA Risk/Return"
       subtitle = "Risk return of DJIA stocks"
@@ -109,6 +115,8 @@ disqusShortname = ""
       subtitle = "Anomalies"
       image = "projects/pic17.jpg"
       url = "blogs/blog8"
+
+ 
 
   #   [[params.tiles.showcase]]
   #     title = "Ipsum"
@@ -131,12 +139,12 @@ disqusShortname = ""
     # To add more blogs just copy and paste the code.
 
   # Section Type Two
-  [params.two]
-    enable = true
-    title = "About me"
-    subtitle = ""
-    buttonText = "Get Started"
-    url = "blogs/blog1"
+  #[params.two]
+   # enable = true
+    #title = "About me"
+    #subtitle = ""
+    #buttonText = "Get Started"
+    #url = "blogs/blog1"
 
 
   # Contact section
