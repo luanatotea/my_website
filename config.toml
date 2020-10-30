@@ -67,9 +67,9 @@ disqusShortname = ""
     #    url = "UrlOfLink"
 
     # Button Style 1
-    [[params.navigation.button1]]
-      name = "Get Started"
-      url = "blogs"
+   # [[params.navigation.button1]]
+    #  name = "Get Started"
+    #  url = "blogs"
 
     # Button Style 2
     [[params.navigation.button2]]
@@ -81,7 +81,7 @@ disqusShortname = ""
   [params.banner]
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
-    title = "Hey there! This is Luana"
+    title = "Hey there! This is"
     subtitle = "Topics I'm interested in."
     buttonText = "Let's dive in!"
     image = "projects/pic15.jpg"
