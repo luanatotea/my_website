@@ -38,7 +38,7 @@ disqusShortname = ""
   # Navigation Section
   [params.navigation]
     title = "Luana"
-    subtitle = "LBS 2021"
+    subtitle = "Totea"
     menu = "Menu"
     # Optional logo as brand stored in img/
     # logo = "logo.png"
@@ -82,7 +82,7 @@ disqusShortname = ""
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
     title = "L-M T"
-    subtitle = "reading for MASTER IN FINANCIAL ANALYSIS @LONDON BUSINESS SCHOOL & MASTER IN ART BUSINESS @Sothebys Insitute of Art"
+    subtitle = "reading for MASTER IN FINANCIAL ANALYSIS @LBS & MASTER IN ART BUSINESS @Sothebys Insitute of Art"
     buttonText = "Let's dive in!"
     image = "banner.jpg"
 
