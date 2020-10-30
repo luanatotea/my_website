@@ -37,7 +37,7 @@ disqusShortname = ""
 
   # Navigation Section
   [params.navigation]
-    title = "My Portofolio"
+    title = "Luana"
     subtitle = "LBS 2021"
     menu = "Menu"
     # Optional logo as brand stored in img/
@@ -82,9 +82,10 @@ disqusShortname = ""
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
     title = "Hey there! This is"
-    subtitle = "Topics I'm interested in."
+    subtitle = "MASTER IN FINANCIAL ANALYSIS 2021 CANDIDATE AT LONDON BUSINESS SCHOOL & 
+                MASTER IN ART BUSINESS @Sothebys Insitute of Art 2021"
     buttonText = "Let's dive in!"
-    image = "projects/pic15.jpg"
+    image = "banner.jpg"
 
 
   # Tiles Section
@@ -94,7 +95,7 @@ disqusShortname = ""
     
    [[params.tiles.showcase]]
       title = "About me"
-      subtitle = "My story"
+      subtitle = "Professional Experience/Activities & Interests"
       image = "projects/pic18.jpg"
       url = "blogs/blog1"
     
