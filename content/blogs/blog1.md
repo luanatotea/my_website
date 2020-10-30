@@ -20,4 +20,4 @@ title: Ipsum
     Finance. In parallel I will be studying MA Art Business at Sothebys institute. 
     I want to use this platform to share my work on various topics I'm intereted in. 
     I view it as an immersive canvas touching on subjects from Finance, Climate Change 
-    (&Sustainability), Art and the Art Market and Fashion."
+    (&Sustainability), Art and the Art Market and Fashion.
